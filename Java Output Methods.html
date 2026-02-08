@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Output Methods - Introduction to Programming</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .content {
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+        }
+        
+        .explanation-section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border-left: 5px solid #4b6cb7;
+        }
+        
+        .method-title {
+            color: #182848;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .method-title .icon {
+            background-color: #4b6cb7;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            overflow-x: auto;
+        }
+        
+        .explanation {
+            background-color: #eef4ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            line-height: 1.8;
+        }
+        
+        .explanation p {
+            margin-bottom: 10px;
+        }
+        
+        .analogy {
+            background-color: #fff4e6;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #ff9900;
+        }
+        
+        .visualization-section {
+            margin-top: 30px;
+        }
+        
+        .visualization-title {
+            font-size: 1.8rem;
+            color: #182848;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .visualization-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .output-box {
+            flex: 1;
+            min-width: 300px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            padding: 20px;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .output-title {
+            color: #4b6cb7;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 2px solid #4b6cb7;
+            padding-bottom: 10px;
+        }
+        
+        .output-content {
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            min-height: 200px;
+            white-space: pre-line;
+            padding: 15px;
+            background-color: #1e1e1e;
+            border-radius: 5px;
+            overflow-y: auto;
+        }
+        
+        .code-explanation {
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            background-color: #4b6cb7;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #3a5795;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-reset {
+            background-color: #666;
+        }
+        
+        .btn-reset:hover {
+            background-color: #555;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 15px;
+            }
+            
+            .explanation-section {
+                padding: 15px;
+            }
+            
+            .output-box {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Java Output Methods</h1>
+            <div class="subtitle">Introduction to Programming - Visual Explanation for Diploma Students</div>
+        </header>
+        
+        <div class="content">
+            <!-- Explanation Section -->
+            <div class="explanation-section">
+                <div class="method-title">
+                    <div class="icon">1</div>
+                    <h2>System.out.println()</h2>
+                </div>
+                
+                <div class="code-block">System.out.println("Hello, World!");</div>
+                
+                <div class="explanation">
+                    <p><strong>What it does:</strong> Prints text to the console and moves to the next line.</p>
+                    <p><strong>How to remember:</strong> Think of "println" as "print line". It prints and then goes to a new line.</p>
+                    <p><strong>Key characteristic:</strong> After printing, the cursor moves to the beginning of the next line.</p>
+                    
+                    <div class="analogy">
+                        <strong>Simple Analogy:</strong> Imagine you're writing on a piece of paper. With <code>println</code>, after writing something, you move your pen to the next line automatically.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="explanation-section">
+                <div class="method-title">
+                    <div class="icon">2</div>
+                    <h2>System.out.print()</h2>
+                </div>
+                
+                <div class="code-block">System.out.print("Hello, ");<br>System.out.print("World!");</div>
+                
+                <div class="explanation">
+                    <p><strong>What it does:</strong> Prints text to the console but stays on the same line.</p>
+                    <p><strong>How to remember:</strong> Think of "print" as just "print" without the "line" part.</p>
+                    <p><strong>Key characteristic:</strong> After printing, the cursor stays at the end of what was printed, ready for more text on the same line.</p>
+                    
+                    <div class="analogy">
+                        <strong>Simple Analogy:</strong> Imagine you're writing on a piece of paper. With <code>print</code>, you write something and keep your pen right where you finished, ready to write more on the same line.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="explanation-section">
+                <div class="method-title">
+                    <div class="icon">3</div>
+                    <h2>System.out.printf()</h2>
+                </div>
+                
+                <div class="code-block">int sum = 25;<br>System.out.printf("Sum is %d\n", sum);</div>
+                
+                <div class="explanation">
+                    <p><strong>What it does:</strong> Prints formatted text to the console. You can insert variables into specific places in the text.</p>
+                    <p><strong>How to remember:</strong> Think of "printf" as "print formatted".</p>
+                    <p><strong>Key characteristic:</strong> Uses placeholders like <code>%d</code> (for integers), <code>%f</code> (for decimals), <code>%s</code> (for text) to insert values into the output string.</p>
+                    <p><strong>Special note:</strong> <code>\n</code> at the end moves to the next line (like println does).</p>
+                    
+                    <div class="analogy">
+                        <strong>Simple Analogy:</strong> Imagine you have a form letter with blanks to fill in. With <code>printf</code>, you create a template with blanks (like <code>%d</code>), and then you provide the values to fill those blanks.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="explanation-section">
+                <div class="method-title">
+                    <div class="icon">+</div>
+                    <h2>Import Scanner for Input</h2>
+                </div>
+                
+                <div class="code-block">import java.util.Scanner;</div>
+                
+                <div class="explanation">
+                    <p><strong>What it does:</strong> This line tells Java you want to use the Scanner class, which is a tool for reading user input from the keyboard.</p>
+                    <p><strong>How to remember:</strong> Think of it like telling Java, "I need to use the Scanner tool from the java.util toolbox."</p>
+                    <p><strong>Key characteristic:</strong> You need to put this line at the very top of your Java file (before the class definition) to use Scanner.</p>
+                    
+                    <div class="analogy">
+                        <strong>Simple Analogy:</strong> Before you can use a special tool (like a calculator), you need to take it out of your toolbox. <code>import java.util.Scanner;</code> is like taking the Scanner tool out of Java's toolbox so you can use it.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Visualization Section -->
+            <div class="visualization-section">
+                <h2 class="visualization-title">Visualizing the Output</h2>
+                <p style="text-align: center; margin-bottom: 20px;">Click the buttons below to see how each method produces output step by step:</p>
+                
+                <div class="buttons">
+                    <button class="btn" id="btnPrintln">Show println() Example</button>
+                    <button class="btn" id="btnPrint">Show print() Example</button>
+                    <button class="btn" id="btnPrintf">Show printf() Example</button>
+                    <button class="btn btn-reset" id="btnReset">Reset Output</button>
+                </div>
+                
+                <div class="visualization-container">
+                    <div class="output-box">
+                        <div class="output-title">Console Output</div>
+                        <div class="output-content" id="outputConsole">Output will appear here...</div>
+                        <div class="code-explanation" id="codeExplanation">
+                            Click a button above to see Java code examples and their outputs.
+                        </div>
+                    </div>
+                    
+                    <div class="output-box">
+                        <div class="output-title">Java Code</div>
+                        <div class="output-content" id="outputCode">// Java code will appear here</div>
+                        <div class="code-explanation">
+                            This shows the actual Java code that produces the output.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Introduction to Programming - Diploma Level</p>
+            <p>This visualization helps understand Java output methods: System.out.println(), System.out.print(), and System.out.printf()</p>
+        </footer>
+    </div>
+
+    <script>
+        // Get DOM elements
+        const outputConsole = document.getElementById('outputConsole');
+        const outputCode = document.getElementById('outputCode');
+        const codeExplanation = document.getElementById('codeExplanation');
+        const btnPrintln = document.getElementById('btnPrintln');
+        const btnPrint = document.getElementById('btnPrint');
+        const btnPrintf = document.getElementById('btnPrintf');
+        const btnReset = document.getElementById('btnReset');
+        
+        // Initial state
+        let currentOutput = "";
+        
+        // println example
+        btnPrintln.addEventListener('click', function() {
+            currentOutput = "";
+            outputConsole.textContent = "";
+            
+            // Show the code
+            outputCode.textContent = `public class PrintExample {
+    public static void main(String[] args) {
+        System.out.println("Welcome to Java!");
+        System.out.println("This is line 1.");
+        System.out.println("This is line 2.");
+        System.out.println("Each println moves to a new line.");
+    }
+}`;
+            
+            // Explain what will happen
+            codeExplanation.textContent = "System.out.println() prints the text and then moves to the next line. Each println statement creates a new line.";
+            
+            // Simulate the output with delays
+            simulateOutput([
+                {text: "Welcome to Java!\n", delay: 800},
+                {text: "This is line 1.\n", delay: 800},
+                {text: "This is line 2.\n", delay: 800},
+                {text: "Each println moves to a new line.\n", delay: 800}
+            ]);
+        });
+        
+        // print example
+        btnPrint.addEventListener('click', function() {
+            currentOutput = "";
+            outputConsole.textContent = "";
+            
+            // Show the code
+            outputCode.textContent = `public class PrintExample {
+    public static void main(String[] args) {
+        System.out.print("Hello, ");
+        System.out.print("this is ");
+        System.out.print("all on ");
+        System.out.print("the same line.");
+        System.out.println(); // Just to move to next line
+        System.out.print("Now we are on a new line.");
+    }
+}`;
+            
+            // Explain what will happen
+            codeExplanation.textContent = "System.out.print() prints text but stays on the same line. Notice how multiple print statements continue on the same line until we use println() to move to a new line.";
+            
+            // Simulate the output with delays
+            simulateOutput([
+                {text: "Hello, ", delay: 600},
+                {text: "this is ", delay: 600},
+                {text: "all on ", delay: 600},
+                {text: "the same line.", delay: 600},
+                {text: "\n", delay: 400},
+                {text: "Now we are on a new line.", delay: 800}
+            ]);
+        });
+        
+        // printf example
+        btnPrintf.addEventListener('click', function() {
+            currentOutput = "";
+            outputConsole.textContent = "";
+            
+            // Show the code
+            outputCode.textContent = `import java.util.Scanner;
+
+public class PrintfExample {
+    public static void main(String[] args) {
+        int sum = 42;
+        double average = 85.5;
+        String name = "Alice";
+        
+        System.out.printf("Sum is %d\\n", sum);
+        System.out.printf("Average: %.2f\\n", average);
+        System.out.printf("Student: %s scored %.1f%%\\n", name, average);
+        System.out.printf("%s's total: %d (%.2f average)", name, sum, average);
+    }
+}`;
+            
+            // Explain what will happen
+            codeExplanation.textContent = "System.out.printf() uses placeholders: %d for integers, %f for decimals, %s for text. The \\n moves to a new line. %.2f means show 2 decimal places.";
+            
+            // Simulate the output with delays
+            simulateOutput([
+                {text: "Sum is 42\n", delay: 800},
+                {text: "Average: 85.50\n", delay: 800},
+                {text: "Student: Alice scored 85.5%\n", delay: 800},
+                {text: "Alice's total: 42 (85.50 average)", delay: 800}
+            ]);
+        });
+        
+        // Reset output
+        btnReset.addEventListener('click', function() {
+            currentOutput = "";
+            outputConsole.textContent = "Output will appear here...";
+            outputCode.textContent = "// Java code will appear here";
+            codeExplanation.textContent = "Click a button above to see Java code examples and their outputs.";
+        });
+        
+        // Function to simulate typing output with delays
+        function simulateOutput(messages) {
+            outputConsole.textContent = "";
+            currentOutput = "";
+            
+            // Process each message with delay
+            messages.forEach((msg, index) => {
+                setTimeout(() => {
+                    currentOutput += msg.text;
+                    outputConsole.textContent = currentOutput;
+                }, index === 0 ? 0 : messages.slice(0, index).reduce((sum, m) => sum + m.delay, 0));
+            });
+        }
+    </script>
+</body>
+</html>
